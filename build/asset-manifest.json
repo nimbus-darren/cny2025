@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/cny2025/static/css/main.cb1ae128.css",
+    "main.js": "/cny2025/static/js/main.50677d8d.js",
+    "static/js/488.ace0fa60.chunk.js": "/cny2025/static/js/488.ace0fa60.chunk.js",
+    "static/media/snakebackground.png": "/cny2025/static/media/snakebackground.a4d66e214c599897ee1d.png",
+    "index.html": "/cny2025/index.html",
+    "main.cb1ae128.css.map": "/cny2025/static/css/main.cb1ae128.css.map",
+    "main.50677d8d.js.map": "/cny2025/static/js/main.50677d8d.js.map",
+    "488.ace0fa60.chunk.js.map": "/cny2025/static/js/488.ace0fa60.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb1ae128.css",
+    "static/js/main.50677d8d.js"
+  ]
+}
