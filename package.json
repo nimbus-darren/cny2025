@@ -1,6 +1,6 @@
 {
   "name": "cny2025",
-  "homepage": "https://nimbus-darren.github.io/cny2025",
+  "homepage": "https://nimbus-darren.github.io/cny2025/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "main -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
