@@ -103,19 +103,19 @@ button:hover {
   justify-content: center;
   align-items: center;
   background-color: #06314c; /* Gold color for the ball */
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1rem;
+  color: rgb(255, 169, 93);
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   transition: width 0.2s ease, height 0.2s ease; /* Smooth transition for resizing */
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .lucky-ball span {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
 }
 
 /* Responsive styling for smaller screens */
@@ -210,4 +210,33 @@ select:hover {
     width: 100%;
     font-size: 1.2rem;
   }
+}
+
+.footer {
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 2em;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.footer-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer-info {
+  color: #555; /* Slightly darker grey for text */
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.footer-info strong {
+  color: #000; /* Darker for emphasis */
 }

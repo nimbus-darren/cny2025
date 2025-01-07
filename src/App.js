@@ -4,6 +4,7 @@ import { generateLuckyNumbers } from "./utils/luckyNumberUtils.js"; // Import th
 import UserInputs from "./components/UserInputs.js"; // Import the new UserInputs component
 import "./App.css"; // Ensure you're importing your customized CSS
 import zodiacFortunes from "./assets/zodiacfortunes.js";
+import companyLogo from "./assets/images/companyLogo.svg";
 
 function App() {
   // State to manage user input and generated lucky numbers
@@ -19,6 +20,21 @@ function App() {
   // Reference to the lucky numbers container
   const luckyNumbersContainerRef = useRef(null);
 
+  const zodiacImages = {
+    rat: require("./assets/images/zodiacpictures/rat.png"),
+    ox: require("./assets/images/zodiacpictures/ox.png"),
+    tiger: require("./assets/images/zodiacpictures/tiger.png"),
+    rabbit: require("./assets/images/zodiacpictures/rabbit.png"),
+    dragon: require("./assets/images/zodiacpictures/dragon.png"),
+    snake: require("./assets/images/zodiacpictures/snake.png"),
+    horse: require("./assets/images/zodiacpictures/horse.png"),
+    goat: require("./assets/images/zodiacpictures/goat.png"),
+    monkey: require("./assets/images/zodiacpictures/monkey.png"),
+    rooster: require("./assets/images/zodiacpictures/rooster.png"),
+    dog: require("./assets/images/zodiacpictures/dog.png"),
+    pig: require("./assets/images/zodiacpictures/pig.png"),
+  };
+
   // Function to handle generating lucky numbers
   const handleGenerateLuckyNumbers = () => {
     if (stage === 2) {
@@ -27,8 +43,10 @@ function App() {
           lastName.charAt(0).toUpperCase() + lastName.slice(1)
         }! You found the hidden fortune cookie!🥠 Use Promocode < Happy2025 > to get 15% off one regular home cleaning session at book.nimbushomes.com! Session must be completed by 31 Mar 2025.
         
-If you wish to generate a different set of lucky numbers, please refresh this page and try again!`
+If you wish to retrieve the lucky numbers for a different user profile, you can do so after closing this alert!`
       );
+      window.location.reload();
+      return;
     }
 
     // Validate alphabet
@@ -138,25 +156,77 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
         Get Your Lucky Numbers!
       </Button>
 
-      {/* Lucky Numbers Balls displayed horizontally */}
-      <div
-        className="lucky-numbers-container"
-        id="luckyNumbers"
-        ref={luckyNumbersContainerRef} // Reference to enable scrolling
-      >
-        {luckyNumbers.map((number, index) => (
-          <div key={index} className="lucky-ball">
-            <span>{number}</span>
-          </div>
-        ))}
-      </div>
-
       {/* Show Lorem Ipsum Text after generating numbers */}
       {showLoremIpsum && (
         <div className="lorem-ipsum-container">
+          {/* zodiac image here */}
+          {zodiacAnimal && (
+            <img
+              src={zodiacImages[zodiacAnimal.toLowerCase()]}
+              alt={`${zodiacAnimal} Zodiac`}
+              className="zodiac-image"
+              style={{ width: "80%", height: "auto", borderRadius: "10px" }}
+            />
+          )}
+          <br /> <br />
+          {/* Lucky Numbers Balls displayed horizontally */}
+          <div
+            style={{
+              padding: "2em",
+              border: "1px solid grey",
+              borderRadius: "15px",
+            }}
+          >
+            <p style={{ fontSize: "1.3em", paddingBottom: "1em" }}>
+              <u>
+                <b>Your Personal Lucky Numbers</b>
+              </u>
+            </p>
+            <div
+              className="lucky-numbers-container"
+              id="luckyNumbers"
+              ref={luckyNumbersContainerRef} // Reference to enable scrolling
+            >
+              {luckyNumbers.map((number, index) => (
+                <div key={index} className="lucky-ball">
+                  <span>{number}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p>
+            <a
+              href="https://www.scmp.com/magazines/style/lifestyle/leisure/article/3293097/chinese-horoscopes-year-wood-snake-2025-predictions-health-wealth-work-and-love-plus-wood-snakes"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Fortune from South China Morning Post
+            </a>
+            :
+          </p>
           <p>{loremIpsumText}</p>
         </div>
       )}
+      <footer className="footer">
+        <div className="footer-container">
+          <img
+            src={companyLogo}
+            alt="Nimbus Homes Logo"
+            className="footer-logo"
+          />
+          <div className="footer-info">
+            <p>
+              <strong>Nimbus Homes</strong> <br />
+              Providing top-notch home cleaning services tailored to your needs.
+            </p>
+            <p>
+              <strong>Contact Us:</strong> <br />
+              Email: info@nimbushomes.com <br />
+              Phone: +65 1234 5678
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
