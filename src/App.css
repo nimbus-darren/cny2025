@@ -20,7 +20,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  max-width: 700px;
   margin: auto;
   text-align: center; /* Center-align text */
 }
@@ -107,8 +107,8 @@ button:hover {
   color: rgb(255, 169, 93);
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 90px;
-  height: 90px;
+  width: 4em;
+  height: 4em;
   border-radius: 50%;
   transition: width 0.2s ease, height 0.2s ease; /* Smooth transition for resizing */
   margin-bottom: 1em;
@@ -213,8 +213,9 @@ select:hover {
 }
 
 .footer {
-  background-color: #f8f9fa; /* Light grey background */
+  background-color: #06314c; /* Light grey background */
   padding: 2em;
+  margin-top: 2em;
   border-top: 1px solid #ddd;
   text-align: center;
 }
@@ -232,11 +233,64 @@ select:hover {
 }
 
 .footer-info {
-  color: #555; /* Slightly darker grey for text */
+  color: #ffffff; /* Slightly darker grey for text */
   font-size: 0.9em;
   line-height: 1.5;
 }
 
 .footer-info strong {
-  color: #000; /* Darker for emphasis */
+  color: #ffffff; /* Darker for emphasis */
+}
+.footer-links {
+  display: flex;
+  gap: 15px; /* Space between icons */
+
+  justify-content: center; /* Center icons */
+}
+
+.footer-link {
+  color: #ffffff; /* Icon color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease;
+  margin-top: 2em;
+}
+
+.footer-link:hover {
+  color: #e36b2b; /* Change color on hover */
+}
+
+.social-share-icons {
+  display: flex;
+  justify-content: center; /* Align items to the center */
+  gap: 15px; /* Space between the icons */
+}
+
+.social-share-icons button {
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.social-share-icons .react-share__ShareButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-share-icons .react-share__Icon {
+  margin: 0;
+  padding: 10px;
+}
+
+.social-share-icons a {
+  text-decoration: none; /* Remove underline from links */
+}
+
+.social-share-icons .react-share__ShareButton:hover {
+  opacity: 0.8; /* Slight transparency on hover */
+}
+
+.pre-line {
+  white-space: pre-line;
 }
