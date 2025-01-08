@@ -73,14 +73,40 @@ If you wish to retrieve the lucky numbers for a different user profile, you can 
       return;
     }
 
-    if (
-      !alphabet ||
-      !lastName ||
-      !birthYear ||
-      !zodiacAnimal ||
-      !homeCleaning
-    ) {
-      alert("Please complete all fields.");
+    // Validate alphabet
+    if (!alphabet) {
+      alert("Please select the first alphabet of your name!");
+      return;
+    }
+
+    // Validate lastName
+    if (!lastName.trim()) {
+      alert("Last name must be at least 1 character long.");
+      return;
+    }
+    if (lastName.length > 40) {
+      alert("Last name cannot exceed 40 characters.");
+      return;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(lastName)) {
+      alert("Last name can only contain alphabets and spaces.");
+      return;
+    }
+
+    // Validate birthYear
+    if (!birthYear) {
+      alert("Please input your birth year.");
+      return;
+    }
+
+    if (!zodiacAnimal) {
+      alert("Please select your Zodiac Animal");
+      return;
+    }
+
+    // Validate homeCleaning
+    if (!homeCleaning) {
+      alert("Please input how regularly you clean your home.");
       return;
     }
 
@@ -116,6 +142,27 @@ If you wish to retrieve the lucky numbers for a different user profile, you can 
       <h1 className="chinese-new-year-text">
         Nimbus Homes Lucky Numbers Generator 2025
       </h1>
+
+      <div className="introduction-text-container">
+        <p className="introduction-text">
+          Wishing you a wonderful start to Year of the Wood Snake! <br />
+          To kick off the year with some fun and excitement, we've created a
+          special lucky number generator to inspire your TOTO lucky draw picks.
+          <br />
+          <br />
+          The numbers are uniquely generated and take into account your first
+          name, last name, birth year, zodiac animal, and home cleaning
+          regularity.
+          <br />
+          <b>(Did you know that a clean home invites wealth and prosperity?)</b>
+          <br />
+          <br />
+          Go ahead and get your lucky numbers for 2025 now! <br />
+          <b>HUAT AH!</b>
+          <br />
+        </p>
+      </div>
+
       {/* User input section */}
       <UserInputs
         alphabet={alphabet}
