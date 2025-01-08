@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cny2025/static/css/main.07b706ba.css",
-    "main.js": "/cny2025/static/js/main.538cba3b.js",
+    "main.js": "/cny2025/static/js/main.a965c3bc.js",
     "static/media/snakebackground.png": "/cny2025/static/media/snakebackground.a4d66e214c599897ee1d.png",
     "static/media/rooster.png": "/cny2025/static/media/rooster.c46962d4768f8c869d1f.png",
     "static/media/rat.png": "/cny2025/static/media/rat.e709228662e2a5d65b86.png",
@@ -17,10 +17,10 @@
     "static/media/dog.png": "/cny2025/static/media/dog.f5855abeafb7dd2a2097.png",
     "index.html": "/cny2025/index.html",
     "main.07b706ba.css.map": "/cny2025/static/css/main.07b706ba.css.map",
-    "main.538cba3b.js.map": "/cny2025/static/js/main.538cba3b.js.map"
+    "main.a965c3bc.js.map": "/cny2025/static/js/main.a965c3bc.js.map"
   },
   "entrypoints": [
     "static/css/main.07b706ba.css",
-    "static/js/main.538cba3b.js"
+    "static/js/main.a965c3bc.js"
   ]
 }
