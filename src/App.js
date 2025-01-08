@@ -5,7 +5,7 @@ import UserInputs from "./components/UserInputs.js";
 import "./App.css";
 import zodiacFortunes from "./assets/zodiacfortunes.js";
 import companyLogo from "./assets/images/companyLogo.png";
-import { FaEnvelope, FaWhatsapp, FaGlobe } from "react-icons/fa";
+import { FaEnvelope, FaWhatsapp, FaGlobe, FaCopy } from "react-icons/fa";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -32,6 +32,7 @@ function App() {
   const [zodiacAnimal, setZodiacAnimal] = useState("");
   const [loremIpsumText, setLoremIpsumText] = useState("");
   const luckyNumbersContainerRef = useRef(null);
+  const [copySuccess, setCopySuccess] = useState(false); // State to show copy success
 
   const zodiacImages = {
     rat: require("./assets/images/zodiacpictures/rat.png"),
@@ -46,6 +47,17 @@ function App() {
     rooster: require("./assets/images/zodiacpictures/rooster.png"),
     dog: require("./assets/images/zodiacpictures/dog.png"),
     pig: require("./assets/images/zodiacpictures/pig.png"),
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard
+      .writeText(
+        `I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together! \n\nHere's the website: ${window.location.href}`
+      )
+      .then(() => {
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000); // Reset success message after 2 seconds
+      });
   };
 
   const handleGenerateLuckyNumbers = () => {
@@ -140,22 +152,31 @@ If you wish to retrieve the lucky numbers for a different user profile, you can 
               </div>
             ))}
           </div>
-          <p>{loremIpsumText}</p>
+          <p>
+            <span>
+              <a
+                href="https://www.scmp.com/magazines/style/lifestyle/leisure/article/3293097/chinese-horoscopes-year-wood-snake-2025-predictions-health-wealth-work-and-love-plus-wood-snakes"
+                style={{ color: "black" }}
+              >
+                Fortune retrieved from South China Morning Post:
+              </a>
+              <u />
+            </span>
+            <br />
+            <br />
+            {loremIpsumText}
+          </p>
           <br />
           <br />
           <p>
             <strong>
-              Share your results and get your friends to try it out:
+              Share your results and get your friends to try it out
             </strong>
-            <br />
-            Hint: If their lucky numbers win the TOTO draw, ask them to give you
-            a cut 😉
           </p>
-
           <div className="social-share-icons">
             <EmailShareButton
               subject={`Lucky TOTO number generator from Nimbus Homes`}
-              body={`I got my Zodiac fortune from Nimbus Homes, here it is: ${loremIpsumText}. Get yours done and generate your lucky numbers too so we can buy TOTO together. Here's the website:`}
+              body={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together! \n\nHere's the website:`}
               url={`${window.location.href}`}
             >
               <EmailIcon size={42} round={true} />
@@ -166,19 +187,40 @@ If you wish to retrieve the lucky numbers for a different user profile, you can 
             </FacebookShareButton>
 
             <TelegramShareButton
-              title={`I got my Zodiac fortune from Nimbus Homes, here it is: ${loremIpsumText}. Get yours done and generate your lucky numbers too so we can buy TOTO together.`}
+              title={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together!`}
               url={window.location.href}
             >
               <TelegramIcon size={42} round={true} />
             </TelegramShareButton>
 
             <WhatsappShareButton
-              title={`I got my Zodiac fortune from Nimbus Homes, here it is: ${loremIpsumText}. Get yours done and generate your lucky numbers too so we can buy TOTO together.`}
+              title={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together!`}
               url={window.location.href}
             >
               <WhatsappIcon size={42} round={true} />
             </WhatsappShareButton>
+            <div>
+              <button
+                className="copy-button"
+                onClick={handleCopyText}
+                style={{
+                  color: "grey",
+                  cursor: "pointer",
+                  border: "1px solid grey",
+                  borderRadius: "50%",
+                }}
+              >
+                <FaCopy size={20} />
+              </button>
+              {copySuccess && (
+                <span style={{ marginLeft: "10px", color: "green" }}>
+                  Text copied!
+                </span>
+              )}
+            </div>
           </div>
+          Hint: If their lucky numbers win the TOTO draw, ask them to give you a
+          cut 😉
         </div>
       )}
 

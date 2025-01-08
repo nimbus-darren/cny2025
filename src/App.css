@@ -294,3 +294,7 @@ select:hover {
 .pre-line {
   white-space: pre-line;
 }
+
+.copy-button:hover {
+  opacity: 0.8;
+}
