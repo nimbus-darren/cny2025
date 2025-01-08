@@ -1,9 +1,24 @@
 import React, { useState, useRef } from "react";
 import { Button } from "react-bootstrap";
-import { generateLuckyNumbers } from "./utils/luckyNumberUtils.js"; // Import the lucky numbers function
-import UserInputs from "./components/UserInputs.js"; // Import the new UserInputs component
-import "./App.css"; // Ensure you're importing your customized CSS
+import { generateLuckyNumbers } from "./utils/luckyNumberUtils.js";
+import UserInputs from "./components/UserInputs.js";
+import "./App.css";
 import zodiacFortunes from "./assets/zodiacfortunes.js";
+import companyLogo from "./assets/images/companyLogo.png";
+import { FaEnvelope, FaWhatsapp, FaGlobe, FaCopy } from "react-icons/fa";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+} from "react-share";
+
+import {
+  EmailIcon,
+  FacebookIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from "react-share";
 
 function App() {
   // State to manage user input and generated lucky numbers
@@ -16,10 +31,35 @@ function App() {
   const [stage, setStage] = useState(1);
   const [zodiacAnimal, setZodiacAnimal] = useState("");
   const [loremIpsumText, setLoremIpsumText] = useState("");
-  // Reference to the lucky numbers container
   const luckyNumbersContainerRef = useRef(null);
+  const [copySuccess, setCopySuccess] = useState(false); // State to show copy success
 
-  // Function to handle generating lucky numbers
+  const zodiacImages = {
+    rat: require("./assets/images/zodiacpictures/rat.png"),
+    ox: require("./assets/images/zodiacpictures/ox.png"),
+    tiger: require("./assets/images/zodiacpictures/tiger.png"),
+    rabbit: require("./assets/images/zodiacpictures/rabbit.png"),
+    dragon: require("./assets/images/zodiacpictures/dragon.png"),
+    snake: require("./assets/images/zodiacpictures/snake.png"),
+    horse: require("./assets/images/zodiacpictures/horse.png"),
+    goat: require("./assets/images/zodiacpictures/goat.png"),
+    monkey: require("./assets/images/zodiacpictures/monkey.png"),
+    rooster: require("./assets/images/zodiacpictures/rooster.png"),
+    dog: require("./assets/images/zodiacpictures/dog.png"),
+    pig: require("./assets/images/zodiacpictures/pig.png"),
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard
+      .writeText(
+        `I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together! \n\nHere's the website: ${window.location.href}`
+      )
+      .then(() => {
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 2000); // Reset success message after 2 seconds
+      });
+  };
+
   const handleGenerateLuckyNumbers = () => {
     if (stage === 2) {
       alert(
@@ -27,8 +67,10 @@ function App() {
           lastName.charAt(0).toUpperCase() + lastName.slice(1)
         }! You found the hidden fortune cookie!🥠 Use Promocode < Happy2025 > to get 15% off one regular home cleaning session at book.nimbushomes.com! Session must be completed by 31 Mar 2025.
         
-If you wish to generate a different set of lucky numbers, please refresh this page and try again!`
+If you wish to retrieve the lucky numbers for a different user profile, you can do so after closing this alert!`
       );
+      window.location.reload();
+      return;
     }
 
     // Validate alphabet
@@ -68,7 +110,6 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
       return;
     }
 
-    // Pass inputs to the function to generate lucky numbers
     const numbers = generateLuckyNumbers(
       alphabet,
       lastName,
@@ -77,11 +118,10 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
       zodiacAnimal
     );
     setLuckyNumbers(numbers);
-    setShowLoremIpsum(true); // Show Lorem Ipsum text after generating numbers
+    setShowLoremIpsum(true);
     setStage(2);
     setLoremIpsumText(zodiacFortunes[zodiacAnimal.toLowerCase()]);
 
-    // Calculate the position of the lucky numbers container and scroll
     setTimeout(() => {
       if (luckyNumbersContainerRef.current) {
         const elementPosition =
@@ -89,17 +129,20 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
         const offsetPosition = window.pageYOffset + elementPosition;
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth", // Optional: smooth scrolling
+          behavior: "smooth",
         });
       }
-    }, 500); // Added a delay to allow time for rendering
+    }, 500);
   };
+
+  // const shareUrl = "https://www.nimbushomes.com"; // Your website or the lucky number page
 
   return (
     <div className="app-container">
       <h1 className="chinese-new-year-text">
         Nimbus Homes Lucky Numbers Generator 2025
       </h1>
+
       <div className="introduction-text-container">
         <p className="introduction-text">
           Wishing you a wonderful start to Year of the Wood Snake! <br />
@@ -120,7 +163,7 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
         </p>
       </div>
 
-      {/* User input component */}
+      {/* User input section */}
       <UserInputs
         alphabet={alphabet}
         setAlphabet={setAlphabet}
@@ -133,30 +176,143 @@ If you wish to generate a different set of lucky numbers, please refresh this pa
         zodiacAnimal={zodiacAnimal}
         setZodiacAnimal={setZodiacAnimal}
       />
-
       <Button onClick={handleGenerateLuckyNumbers} id="luckyButton">
         Get Your Lucky Numbers!
       </Button>
 
-      {/* Lucky Numbers Balls displayed horizontally */}
-      <div
-        className="lucky-numbers-container"
-        id="luckyNumbers"
-        ref={luckyNumbersContainerRef} // Reference to enable scrolling
-      >
-        {luckyNumbers.map((number, index) => (
-          <div key={index} className="lucky-ball">
-            <span>{number}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Show Lorem Ipsum Text after generating numbers */}
       {showLoremIpsum && (
-        <div className="lorem-ipsum-container">
-          <p>{loremIpsumText}</p>
+        <div className="lorem-ipsum-container pre-line">
+          {/* Zodiac Image */}
+          {zodiacAnimal && (
+            <img
+              src={zodiacImages[zodiacAnimal.toLowerCase()]}
+              alt={`${zodiacAnimal} Zodiac`}
+              className="zodiac-image"
+              style={{ width: "60%", height: "auto", borderRadius: "10px" }}
+              ref={luckyNumbersContainerRef}
+            />
+          )}
+          <div className="lucky-numbers-container">
+            {luckyNumbers.map((number, index) => (
+              <div key={index} className="lucky-ball">
+                <span>{number}</span>
+              </div>
+            ))}
+          </div>
+          <p>
+            <span>
+              <a
+                href="https://www.scmp.com/magazines/style/lifestyle/leisure/article/3293097/chinese-horoscopes-year-wood-snake-2025-predictions-health-wealth-work-and-love-plus-wood-snakes"
+                style={{ color: "black" }}
+              >
+                Fortune retrieved from South China Morning Post:
+              </a>
+              <u />
+            </span>
+            <br />
+            <br />
+            {loremIpsumText}
+          </p>
+          <br />
+          <br />
+          <p>
+            <strong>
+              Share your results and get your friends to try it out
+            </strong>
+          </p>
+          <div className="social-share-icons">
+            <EmailShareButton
+              subject={`Lucky TOTO number generator from Nimbus Homes`}
+              body={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together! \n\nHere's the website:`}
+              url={`${window.location.href}`}
+            >
+              <EmailIcon size={42} round={true} />
+            </EmailShareButton>
+
+            <FacebookShareButton url={window.location.href}>
+              <FacebookIcon size={42} round={true} />
+            </FacebookShareButton>
+
+            <TelegramShareButton
+              title={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together!`}
+              url={window.location.href}
+            >
+              <TelegramIcon size={42} round={true} />
+            </TelegramShareButton>
+
+            <WhatsappShareButton
+              title={`I got my Zodiac fortune told by Nimbus Homes, here it is: \n \n${loremIpsumText}. \n \nGet yours done and generate your lucky numbers too so we can buy TOTO together!`}
+              url={window.location.href}
+            >
+              <WhatsappIcon size={42} round={true} />
+            </WhatsappShareButton>
+            <div>
+              <button
+                className="copy-button"
+                onClick={handleCopyText}
+                style={{
+                  color: "grey",
+                  cursor: "pointer",
+                  border: "1px solid grey",
+                  borderRadius: "50%",
+                }}
+              >
+                <FaCopy size={20} />
+              </button>
+              {copySuccess && (
+                <span style={{ marginLeft: "10px", color: "green" }}>
+                  Text copied!
+                </span>
+              )}
+            </div>
+          </div>
+          Hint: If their lucky numbers win the TOTO draw, ask them to give you a
+          cut 😉
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-container">
+          <img
+            src={companyLogo}
+            alt="Nimbus Homes Logo"
+            className="footer-logo"
+          />
+          <div className="footer-info">
+            <p>
+              <strong>Looking to clean your home?</strong>
+              <br />
+              Book a cleaning session today!
+              <div className="footer-links">
+                <a href="mailto:hello@nimbushomes.com" className="footer-link">
+                  <FaEnvelope size={"2em"} />
+                </a>
+                <a
+                  href="https://wa.me/6587878241"
+                  className="footer-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaWhatsapp size={"2em"} />
+                </a>
+                <a
+                  href="https://book.nimbushomes.com"
+                  className="footer-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaGlobe size={"2em"} />
+                </a>
+              </div>
+            </p>
+            <a href="https://www.nimbushomes.com" style={{ color: "white" }}>
+              {" "}
+              www.nimbushomes.com
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

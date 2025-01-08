@@ -20,7 +20,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  max-width: 700px;
   margin: auto;
   text-align: center; /* Center-align text */
 }
@@ -103,19 +103,19 @@ button:hover {
   justify-content: center;
   align-items: center;
   background-color: #06314c; /* Gold color for the ball */
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1rem;
+  color: rgb(255, 169, 93);
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 70px;
-  height: 70px;
+  width: 4em;
+  height: 4em;
   border-radius: 50%;
   transition: width 0.2s ease, height 0.2s ease; /* Smooth transition for resizing */
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .lucky-ball span {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
 }
 
 /* Responsive styling for smaller screens */
@@ -210,4 +210,91 @@ select:hover {
     width: 100%;
     font-size: 1.2rem;
   }
+}
+
+.footer {
+  background-color: #06314c; /* Light grey background */
+  padding: 2em;
+  margin-top: 2em;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.footer-logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer-info {
+  color: #ffffff; /* Slightly darker grey for text */
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.footer-info strong {
+  color: #ffffff; /* Darker for emphasis */
+}
+.footer-links {
+  display: flex;
+  gap: 15px; /* Space between icons */
+
+  justify-content: center; /* Center icons */
+}
+
+.footer-link {
+  color: #ffffff; /* Icon color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease;
+  margin-top: 2em;
+}
+
+.footer-link:hover {
+  color: #e36b2b; /* Change color on hover */
+}
+
+.social-share-icons {
+  display: flex;
+  justify-content: center; /* Align items to the center */
+  gap: 15px; /* Space between the icons */
+}
+
+.social-share-icons button {
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.social-share-icons .react-share__ShareButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-share-icons .react-share__Icon {
+  margin: 0;
+  padding: 10px;
+}
+
+.social-share-icons a {
+  text-decoration: none; /* Remove underline from links */
+}
+
+.social-share-icons .react-share__ShareButton:hover {
+  opacity: 0.8; /* Slight transparency on hover */
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.copy-button:hover {
+  opacity: 0.8;
 }

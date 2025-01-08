@@ -9,7 +9,7 @@ export const generateLuckyNumbers = (
   const firstAlphaAscii = alphabet.charCodeAt(0);
   const firstDigitOfAscii = Math.floor(firstAlphaAscii / 10);
   const secondDigitOfAscii = firstAlphaAscii % 10;
-  const lengthOfLastName = lastName.length;
+  const lengthOfLastName = lastName.replace(/\s+/g, "").length;
   const birthYearString = birthYear.toString();
   const firstBirthYearNumber = Number(birthYearString[0]);
   const secondBirthYearNumber = Number(birthYearString[1]);
@@ -17,7 +17,7 @@ export const generateLuckyNumbers = (
   const fourthBirthYearNumber = Number(birthYearString[3]);
 
   let homeCleaningNumber = 0;
-
+  console.log(lengthOfLastName);
   // Determine homeCleaningNumber using a switch case
   switch (homeCleaning) {
     case "everyday":
