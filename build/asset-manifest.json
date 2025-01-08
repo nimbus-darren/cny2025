@@ -1,14 +1,26 @@
 {
   "files": {
-    "main.css": "/cny2025/static/css/main.83b5067e.css",
-    "main.js": "/cny2025/static/js/main.f287855e.js",
+    "main.css": "/cny2025/static/css/main.07b706ba.css",
+    "main.js": "/cny2025/static/js/main.538cba3b.js",
     "static/media/snakebackground.png": "/cny2025/static/media/snakebackground.a4d66e214c599897ee1d.png",
+    "static/media/rooster.png": "/cny2025/static/media/rooster.c46962d4768f8c869d1f.png",
+    "static/media/rat.png": "/cny2025/static/media/rat.e709228662e2a5d65b86.png",
+    "static/media/monkey.png": "/cny2025/static/media/monkey.db26ea2ed66daa93b376.png",
+    "static/media/rabbit.png": "/cny2025/static/media/rabbit.956217f88854573cb89f.png",
+    "static/media/dragon.png": "/cny2025/static/media/dragon.95affd7ecd813d730390.png",
+    "static/media/snake.png": "/cny2025/static/media/snake.6f2e3fdf8fe8fa95ad9f.png",
+    "static/media/ox.png": "/cny2025/static/media/ox.9b0ecec1daa15e58d10d.png",
+    "static/media/horse.png": "/cny2025/static/media/horse.c9e580d81ed440c5f1c9.png",
+    "static/media/tiger.png": "/cny2025/static/media/tiger.0b13a9b18b9478d8f9cc.png",
+    "static/media/pig.png": "/cny2025/static/media/pig.7cd2fea9412a1ae2c670.png",
+    "static/media/goat.png": "/cny2025/static/media/goat.ffcac6a6412b4b2d409d.png",
+    "static/media/dog.png": "/cny2025/static/media/dog.f5855abeafb7dd2a2097.png",
     "index.html": "/cny2025/index.html",
-    "main.83b5067e.css.map": "/cny2025/static/css/main.83b5067e.css.map",
-    "main.f287855e.js.map": "/cny2025/static/js/main.f287855e.js.map"
+    "main.07b706ba.css.map": "/cny2025/static/css/main.07b706ba.css.map",
+    "main.538cba3b.js.map": "/cny2025/static/js/main.538cba3b.js.map"
   },
   "entrypoints": [
-    "static/css/main.83b5067e.css",
-    "static/js/main.f287855e.js"
+    "static/css/main.07b706ba.css",
+    "static/js/main.538cba3b.js"
   ]
 }
